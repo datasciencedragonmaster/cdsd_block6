@@ -312,7 +312,7 @@ def display_churn_figure(i_feature, filtered_data, obj):
         df['total_counts'] = df.groupby(['year_joined'])['counts'].transform('sum')
         df['percentage'] = round( (df['counts'] / df['total_counts']) * 100, 2)
         df['avr_pct'] =  round(df.groupby(['churned'])['percentage'].transform('mean'), 2)
-        n_year_joined = filtered_data.year_joined.max() - filtered_data.year_joined.min() + 1
+        n_year_joined = int(filtered_data.year_joined.max() - filtered_data.year_joined.min() + 1)
         non_churned = df[df['churned'] == 0]
         churned = df[df['churned'] == 1]    
         fig1 = go.Figure(
