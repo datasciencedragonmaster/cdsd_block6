@@ -155,7 +155,7 @@ def display_eda_figure(opt, feature, df, obj):
         counts_year_joined = data_filtered['year_joined'].value_counts().sort_index().reset_index()
         counts_year_joined.columns = ['year_joined', 'count']
         counts_year_joined['percentage'] = (counts_year_joined['count'] / counts_year_joined['count'].sum()) * 100
-        n_year_joined = data_filtered.year_joined.max() - data_filtered.year_joined.min() + 1
+        n_year_joined = int(data_filtered.year_joined.max() - data_filtered.year_joined.min() + 1)
         fig_year_joined = px.histogram(counts_year_joined, x='year_joined', y='count', nbins=n_year_joined, title=f'Year Joined - Histogram ({opt.capitalize()})',
             labels={'year_joined': 'Year Joined', 'count': 'Number of Persons'},
             color_discrete_sequence=['#636EFA'],  # Custom color
@@ -175,7 +175,7 @@ def display_eda_figure(opt, feature, df, obj):
         counts_year_last_membership = data_filtered['year_last_membership'].value_counts().sort_index().reset_index()
         counts_year_last_membership.columns = ['year_last_membership', 'count']
         counts_year_last_membership['percentage'] = (counts_year_last_membership['count'] / counts_year_last_membership['count'].sum()) * 100
-        n_year_last_membership = data_filtered.year_last_membership.max() - data_filtered.year_last_membership.min() + 1
+        n_year_last_membership = int(data_filtered.year_last_membership.max() - data_filtered.year_last_membership.min() + 1)
         fig_year_last_membership = px.histogram(counts_year_last_membership, x='year_last_membership', y='count', nbins=n_year_last_membership, title=f'Year of Last Membership - Histogram ({opt.capitalize()})',
             labels={'year_last_membership': 'Year of Last Membership'},  # Label for y-axis
             color_discrete_sequence=['#636EFA'],  # Custom color
